@@ -9,7 +9,4 @@ public:
 private:
 	void update();
 	void render();
-
-private:
-	Manager* m_manager;
 };

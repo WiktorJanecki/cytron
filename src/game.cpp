@@ -4,7 +4,7 @@
 #include "managers/manager.h"
 
 void Game::start(){
-	this->m_manager = new Manager;
+	
 	std::cout<< VERSION;
 }
 
