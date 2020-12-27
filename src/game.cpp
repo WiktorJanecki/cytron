@@ -1,11 +1,14 @@
-#include <iostream>
 #include "game.h"
+
+#include <iostream>
+
 #include "definitions.h"
 #include "managers/manager.h"
+#include "entities/entity.h"
+#include "components/component.h"
 
 void Game::start(){
-	
-	std::cout<< VERSION;
+
 }
 
 void Game::update(){
