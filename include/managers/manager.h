@@ -14,7 +14,7 @@ public:
 	static bool removeEntity(Entity*);
 	static std::list<Entity*> getEntitiesWith(Component::Type);
 
-	static bool addComponent(Entity*, Component);
+	static bool addComponent(Entity*, Component*);
 	static bool removeComponent(Entity*, Component::Type);
 	static bool hasComponent(Entity*, Component::Type);
 	static Component* getComponent(Entity*, Component::Type);

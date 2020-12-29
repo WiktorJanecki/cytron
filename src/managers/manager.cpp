@@ -32,8 +32,8 @@ std::list<Entity*> Manager::getEntitiesWith(Component::Type type){
 	return entities;
 }
 
-bool Manager::addComponent(Entity* entity, Component component){
-	if(Manager::hasComponent(entity,component.getType())){
+bool Manager::addComponent(Entity* entity, Component* component){
+	if(Manager::hasComponent(entity,component->getType())){
 		return false;
 	}
 	entity->m_components.push_back(component);
@@ -51,7 +51,7 @@ bool Manager::removeComponent(Entity* entity, Component::Type type){
 
 bool Manager::hasComponent(Entity* entity, Component::Type type){
 	for(auto& i : entity->m_components){
-		if(i.getType() == type){
+		if(i->getType() == type){
 			return true;
 		}
 	}
@@ -60,8 +60,8 @@ bool Manager::hasComponent(Entity* entity, Component::Type type){
 
 Component* Manager::getComponent(Entity* entity, Component::Type type){
 	for(auto& i: entity->m_components){
-		if(i.getType() == type)
-		return &i;
+		if(i->getType() == type)
+		return i;
 	}
 	return nullptr;
 }

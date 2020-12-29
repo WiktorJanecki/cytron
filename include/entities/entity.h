@@ -14,6 +14,6 @@ private:
 	void setID(int id);	
 private:
 	int m_id;
-	std::list<Component> m_components;
+	std::list<Component*> m_components;
 friend class Manager;
 };

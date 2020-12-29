@@ -7,10 +7,10 @@ public:
 	enum Type {
 		MESH_COMPONENT = 0,
 		TRANSFORM_COMPONENT,
+        RECT_COMPONENT,
 	};
 public:
-	Component(Type);
 	Type getType();
-private:
+protected:
 	Type m_type;
 };
