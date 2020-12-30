@@ -8,6 +8,7 @@ public:
 		MESH_COMPONENT = 0,
 		TRANSFORM_COMPONENT,
         RECT_COMPONENT,
+        RECT_COLLIDER_COMPONENT,
 	};
 public:
 	Type getType();
