@@ -3,9 +3,12 @@
 #include <iostream>
 
 #include "definitions.h"
+#include "managers/sceneManager.h"
 #include "managers/manager.h"
 #include "managers/windowManager.h"
 #include "managers/timeManager.h"
+#include "scenes/scene.h"
+#include "scenes/menuScene.h"
 #include "entities/entity.h"
 #include "components/component.h"
 #include "components/rectComponent.h"
@@ -14,13 +17,7 @@
 void Game::start(){
 	WindowManager::createWindow(1280,720,"123");
 
-    Entity* entity0 = new Entity();
-    Manager::addEntity(entity0);
-    
-    RectComponent* rectComponent = new RectComponent(0.f,0.f,50.f,50.f);
-    Manager::addComponent(entity0, (Component*) rectComponent);
-
-    Manager::addSystem((System*)new RenderingSystem());
+    SceneManager::initScene((Scene*) new MenuScene );
 
 	while(WindowManager::getWindow()->isOpen()){
 		update();
@@ -42,12 +39,10 @@ void Game::update(){
 	updateEvents();
 
 	TimeManager::count();
+
+    SceneManager::getCurrentScene()->update();
 }
 
 void Game::render(){
-    WindowManager::getWindow()->clear();
-    for(auto& i : Manager::getSystems()){
-        i->render();
-    }
-    WindowManager::getWindow()->display();
+    SceneManager::getCurrentScene()->render();
 }
