@@ -23,7 +23,7 @@ public:
 	static bool removeSystem(System*);
 	static std::list<System*> getSystems();
 
-	static bool clean();
+	static void cleanUp();
 private:
 	Manager(){};
 	static int generateID();

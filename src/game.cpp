@@ -9,6 +9,7 @@
 #include "managers/timeManager.h"
 #include "scenes/scene.h"
 #include "scenes/menuScene.h"
+#include "scenes/gameScene.h"
 #include "entities/entity.h"
 #include "components/component.h"
 #include "components/rectComponent.h"
@@ -29,8 +30,13 @@ void Game::updateEvents(){
     sf::Event event;
     while (WindowManager::getWindow()->pollEvent(event))
     {
-        if (event.type == sf::Event::Closed)
+        if (event.type == sf::Event::Closed){
             WindowManager::getWindow()->close();
+        }else if(event.type == sf::Event::KeyPressed){
+            if(event.key.code == sf::Keyboard::Space){
+                SceneManager::changeScene((Scene*)new GameScene);
+            }
+        }
     }
 
 }

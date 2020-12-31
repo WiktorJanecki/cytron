@@ -10,6 +10,7 @@ class Manager;
 class Entity : Callable{
 public:
 	int getID();
+    virtual ~Entity();
 private:
 	void setID(int id);	
 private:

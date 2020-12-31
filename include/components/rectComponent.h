@@ -10,5 +10,4 @@ public:
     sf::RectangleShape* getRectangleShape();
 private:
     sf::RectangleShape m_shape;
-    sf::Texture* m_texture;
 };

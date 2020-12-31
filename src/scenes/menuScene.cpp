@@ -44,6 +44,8 @@ void MenuScene::render(){
     }
 }
 
-void MenuScene::cleanUp(){}
+void MenuScene::cleanUp(){
+    Manager::cleanUp();
+}
 
 MenuScene::~MenuScene(){}

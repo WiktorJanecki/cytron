@@ -11,6 +11,7 @@ public:
         TEXTURE_COMPONENT,
         RECT_COLLIDER_COMPONENT,
 	};
+    virtual ~Component(){}
 public:
 	Type getType();
 protected:

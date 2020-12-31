@@ -14,6 +14,7 @@ class TextureLoadingSystem : System{
         void update();
         void render();
         void cleanUp();
+        virtual ~TextureLoadingSystem();
     private:
         std::unordered_map<std::string, sf::Texture*> m_textures;
 };

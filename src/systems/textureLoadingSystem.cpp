@@ -38,3 +38,10 @@ void TextureLoadingSystem::update(){}
 void TextureLoadingSystem::render(){}
 
 void TextureLoadingSystem::cleanUp(){}
+
+TextureLoadingSystem::~TextureLoadingSystem(){
+    for(auto&i : m_textures){
+        delete i.second;
+    }
+    m_textures.clear();
+}

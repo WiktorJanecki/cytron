@@ -95,6 +95,22 @@ int Manager::generateID(){
 	return m_lastID-1;
 }
 
+void Manager::cleanUp(){
+    for(auto&i : m_entities){
+        delete i;
+    }
+    m_entities.clear();
+    for(auto&i : m_systems){
+        delete i;
+    }
+    m_systems.clear();
+    for(auto&i : m_callables){
+        delete i;
+    }
+    m_callables.clear();
+    m_lastID = 0;
+}
+
 std::list<Entity*> Manager::m_entities = {};
 std::list<System*> Manager::m_systems = {};
 std::list<Callable*> Manager::m_callables = {};
