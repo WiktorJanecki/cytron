@@ -44,5 +44,7 @@ void Game::update(){
 }
 
 void Game::render(){
+    WindowManager::getWindow()->clear();
     SceneManager::getCurrentScene()->render();
+    WindowManager::getWindow()->display();
 }
