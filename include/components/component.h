@@ -1,8 +1,6 @@
 #pragma once
 
-#include "callable.h"
-
-class Component : Callable{
+class Component {
 public:
 	enum Type {
 		MESH_COMPONENT = 0,

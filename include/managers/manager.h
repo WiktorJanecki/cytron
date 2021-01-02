@@ -6,10 +6,13 @@
 #include "components/component.h"
 #include "entities/entity.h"
 #include "systems/system.h"
+#include "events/event.h"
 
-class Manager : Callable{
+class Manager {
 
 public:
+    static void start();
+
 	static bool addEntity(Entity*);
 	static bool removeEntity(Entity*);
 	static std::list<Entity*> getEntitiesWith(Component::Type);
@@ -22,6 +25,20 @@ public:
 	static bool addSystem(System*);
 	static bool removeSystem(System*);
 	static std::list<System*> getSystems();
+    
+    template<typename T>
+    static std::list<Callable*> getCallablesWith(){
+        std::list<Callable*> callist = std::list<Callable*>(); 
+        T* element;
+        for(auto&i : m_callables){
+            if((element = dynamic_cast<T*>(i))){
+                callist.push_back(i);   
+            }  
+        }
+        return callist;
+    }
+
+    static void initEvent(Event);
 
 	static void cleanUp();
 private:

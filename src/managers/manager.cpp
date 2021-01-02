@@ -6,6 +6,17 @@
 #include "components/component.h"
 #include "entities/entity.h"
 #include "systems/system.h"
+#include "managers/windowManager.h"
+#include "managers/timeManager.h"
+#include "managers/sceneManager.h"
+#include "systems/onEvent.h"
+
+void Manager::start(){
+    m_callables.push_back((Callable*)SceneManager::getCurrentScene());
+    for(auto&i : m_systems){
+        m_callables.push_back((Callable*)i);
+    }
+}
 
 bool Manager::addEntity(Entity* entity){
 	entity->setID(generateID());
@@ -90,6 +101,12 @@ std::list<System*> Manager::getSystems(){
 	return m_systems;
 }
 
+void Manager::initEvent(Event event){
+    for(auto&i : getCallablesWith<onEvent>()){
+        ((onEvent*)i)->listenEvent(event); 
+    }
+}
+
 int Manager::generateID(){
 	m_lastID++;
 	return m_lastID-1;
@@ -104,11 +121,12 @@ void Manager::cleanUp(){
         delete i;
     }
     m_systems.clear();
-    for(auto&i : m_callables){
-        delete i;
-    }
     m_callables.clear();
     m_lastID = 0;
+
+    m_callables.push_back((Callable*)new WindowManager);
+    m_callables.push_back((Callable*)new SceneManager);
+    m_callables.push_back((Callable*)new TimeManager); 
 }
 
 std::list<Entity*> Manager::m_entities = {};
