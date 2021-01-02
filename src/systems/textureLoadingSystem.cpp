@@ -3,7 +3,6 @@
 #include <unordered_map>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 #include "managers/manager.h"
 #include "components/component.h"
@@ -39,10 +38,6 @@ void TextureLoadingSystem::update(){}
 void TextureLoadingSystem::render(){}
 
 void TextureLoadingSystem::cleanUp(){}
-
-void TextureLoadingSystem::handleEvent(sf::Event ev){
-        //std::cout<<ev.type;
-}
 
 TextureLoadingSystem::~TextureLoadingSystem(){
     for(auto&i : m_textures){

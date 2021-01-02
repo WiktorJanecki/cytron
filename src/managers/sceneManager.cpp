@@ -12,13 +12,11 @@ void SceneManager::changeScene(Scene* next){
     delete m_currentScene;
     m_currentScene = next;
     m_currentScene->start();
-    Manager::start();
 }
 
 void SceneManager::initScene(Scene* next){
     m_currentScene = next;
     m_currentScene->start();
-    Manager::start();
 };
 
 Scene* SceneManager::m_currentScene = nullptr;

@@ -10,16 +10,6 @@
 #include "managers/timeManager.h"
 #include "managers/sceneManager.h"
 
-void Manager::start(){
-    m_callables.push_back((Callable*)SceneManager::getCurrentScene());
-    for(auto&i : m_systems){
-        m_callables.push_back((Callable*)i);
-    }
-    m_callables.push_back((Callable*)new WindowManager);
-    m_callables.push_back((Callable*)new SceneManager);
-    m_callables.push_back((Callable*)new TimeManager); 
-}
-
 bool Manager::addEntity(Entity* entity){
 	entity->setID(generateID());
 	m_entities.push_back(entity);
@@ -117,11 +107,9 @@ void Manager::cleanUp(){
         delete i;
     }
     m_systems.clear();
-    m_callables.clear();
     m_lastID = 0;
 }
 
 std::list<Entity*> Manager::m_entities = {};
 std::list<System*> Manager::m_systems = {};
-std::list<Callable*> Manager::m_callables = {};
 int Manager::m_lastID = 0;

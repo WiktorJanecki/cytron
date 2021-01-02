@@ -1,3 +1,5 @@
+#pragma once
+
 #include "components/component.h"
 
 class RectColliderComponent : Component{

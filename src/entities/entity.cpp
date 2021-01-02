@@ -2,8 +2,6 @@
 
 #include <list>
 
-#include "callable.h"
-
 int Entity::getID(){
 	return m_id;
 }

@@ -2,9 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "callable.h"
 
-class System : virtual Callable{
+class System {
 public:
 	virtual void start() = 0;
 	virtual void update() = 0;

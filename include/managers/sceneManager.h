@@ -1,9 +1,8 @@
 #pragma once
 
-#include "callable.h"
 #include "scenes/scene.h"
 
-class SceneManager : Callable{
+class SceneManager{
 public:
     static Scene* getCurrentScene();
     static void changeScene(Scene*);

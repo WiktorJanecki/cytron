@@ -1,8 +1,6 @@
 #pragma once
 
-#include "callable.h"
-
-class Scene : Callable {
+class Scene {
     public:
        virtual void start()=0;
        virtual void update()=0;

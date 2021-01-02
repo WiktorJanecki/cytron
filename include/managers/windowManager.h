@@ -3,9 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#include "callable.h"
-
-class WindowManager : Callable{
+class WindowManager{
 public:
 	static sf::RenderWindow* createWindow(int, int, std::string);
 	static sf::RenderWindow* getWindow();

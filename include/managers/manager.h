@@ -2,7 +2,6 @@
 
 #include <list>
 
-#include "callable.h"
 #include "components/component.h"
 #include "entities/entity.h"
 #include "systems/system.h"
@@ -10,8 +9,6 @@
 class Manager {
 
 public:
-    static void start();
-
 	static bool addEntity(Entity*);
 	static bool removeEntity(Entity*);
 	static std::list<Entity*> getEntitiesWith(Component::Type);
@@ -32,6 +29,5 @@ private:
 private:
 	static std::list<Entity*> m_entities;
 	static std::list<System*> m_systems;
-	static std::list<Callable*> m_callables;
 	static int m_lastID;
 };

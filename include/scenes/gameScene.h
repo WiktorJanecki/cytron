@@ -1,3 +1,5 @@
+#pragma once
+
 #include "scenes/scene.h"
 
 class GameScene : Scene{

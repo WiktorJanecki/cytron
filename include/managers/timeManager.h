@@ -2,9 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "callable.h"
-
-class TimeManager : Callable{
+class TimeManager{
 public:
 	static int getFPS();
 	static void count();
