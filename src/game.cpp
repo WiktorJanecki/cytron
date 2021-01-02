@@ -1,7 +1,5 @@
 #include "game.h"
 
-#include <iostream>
-
 #include "definitions.h"
 #include "managers/sceneManager.h"
 #include "managers/manager.h"
@@ -30,15 +28,14 @@ void Game::updateEvents(){
     sf::Event event;
     while (WindowManager::getWindow()->pollEvent(event))
     {
+        for(auto&i : Manager::getSystems()){
+            i->handleEvent(event);
+        }
+
         if (event.type == sf::Event::Closed){
             WindowManager::getWindow()->close();
-        }else if(event.type == sf::Event::KeyPressed){
-            if(event.key.code == sf::Keyboard::Space){
-                SceneManager::changeScene((Scene*)new GameScene);
-            }
         }
     }
-
 }
 
 void Game::update(){
