@@ -4,6 +4,7 @@
 
 #include "components/component.h"
 #include "entities/entity.h"
+#include "entities/player.h"
 #include "systems/system.h"
 
 class Manager {
@@ -12,6 +13,7 @@ public:
 	static bool addEntity(Entity*);
 	static bool removeEntity(Entity*);
 	static std::list<Entity*> getEntitiesWith(Component::Type);
+    static Player* getPlayer();
 
 	static bool addComponent(Entity*, Component*);
 	static bool removeComponent(Entity*, Component::Type);

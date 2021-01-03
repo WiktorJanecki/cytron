@@ -15,5 +15,7 @@ private:
 private:
 	int m_id;
 	std::list<Component*> m_components;
+protected:
+    bool m_player = false;
 friend class Manager;
 };

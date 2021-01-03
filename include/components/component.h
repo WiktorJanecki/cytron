@@ -9,7 +9,8 @@ public:
         TEXTURE_COMPONENT,
         RECT_COLLIDER_COMPONENT,
         PHYSICS_COMPONENT,
-	};
+        MOVEMENT_COMPONENT,
+    };
     virtual ~Component(){}
 public:
 	Type getType();

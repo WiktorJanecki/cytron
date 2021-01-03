@@ -1,3 +1,5 @@
+#pragma once
+
 #include "systems/system.h"
 
 class PhysicsSystem : System{

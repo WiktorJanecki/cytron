@@ -35,6 +35,15 @@ std::list<Entity*> Manager::getEntitiesWith(Component::Type type){
 	return entities;
 }
 
+Player* Manager::getPlayer(){
+    for(auto&i : m_entities){
+        if(i->m_player){
+            return (Player*)i;
+        }
+    }
+    return nullptr;
+}
+
 bool Manager::addComponent(Entity* entity, Component* component){
 	if(Manager::hasComponent(entity,component->getType())){
 		return false;
