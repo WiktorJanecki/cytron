@@ -8,6 +8,7 @@ public:
         RECT_COMPONENT,
         TEXTURE_COMPONENT,
         RECT_COLLIDER_COMPONENT,
+        PHYSICS_COMPONENT,
 	};
     virtual ~Component(){}
 public:
