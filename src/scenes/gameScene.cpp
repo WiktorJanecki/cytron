@@ -16,6 +16,7 @@
 
 
 void GameScene::start(){
+
     std::cout << " \n GameScene started \n \n";
     
     Entity* entity0 = new Entity();

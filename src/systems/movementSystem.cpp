@@ -12,6 +12,7 @@
 MovementSystem::MovementSystem(){}
 
 void MovementSystem::start(){
+    Manager::listen(this);
     m_player = Manager::getPlayer();
 }
 
@@ -21,33 +22,35 @@ void MovementSystem::update(){
 
 void MovementSystem::render(){}
 
-void MovementSystem::handleEvents(sf::Event event){
-    if(event.type == sf::Event::KeyPressed){
-        if(event.key.code == sf::Keyboard::W){
-            m_w = true;
+void MovementSystem::onEvent(Event event){
+    if(event.type == "sfEvent"){
+        if(event.sfEvent.type == sf::Event::KeyPressed){
+            if(event.sfEvent.key.code == sf::Keyboard::W){
+                m_w = true;
+            }
+            if(event.sfEvent.key.code == sf::Keyboard::S){
+                m_s = true;
+            }
+            if(event.sfEvent.key.code == sf::Keyboard::A){
+                m_a = true;
+            }
+            if(event.sfEvent.key.code == sf::Keyboard::D){
+                m_d = true;
+            }
         }
-        if(event.key.code == sf::Keyboard::S){
-            m_s = true;
-        }
-        if(event.key.code == sf::Keyboard::A){
-            m_a = true;
-        }
-        if(event.key.code == sf::Keyboard::D){
-            m_d = true;
-        }
-    }
-    if(event.type == sf::Event::KeyReleased){
-        if(event.key.code == sf::Keyboard::W){
-            m_w = false;
-        }
-        if(event.key.code == sf::Keyboard::S){
-            m_s = false;
-        }
-        if(event.key.code == sf::Keyboard::A){
-            m_a = false;
-        }
-        if(event.key.code == sf::Keyboard::D){
-            m_d = false;
+        if(event.sfEvent.type == sf::Event::KeyReleased){
+            if(event.sfEvent.key.code == sf::Keyboard::W){
+                m_w = false;
+            }
+            if(event.sfEvent.key.code == sf::Keyboard::S){
+                m_s = false;
+            }
+            if(event.sfEvent.key.code == sf::Keyboard::A){
+                m_a = false;
+            }
+            if(event.sfEvent.key.code == sf::Keyboard::D){
+                m_d = false;
+            }
         }
     }
 }

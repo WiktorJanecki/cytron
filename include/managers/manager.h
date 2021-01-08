@@ -7,6 +7,8 @@
 #include "entities/entity.h"
 #include "entities/player.h"
 #include "systems/system.h"
+#include "events/listener.h"
+#include "events/event.h"
 
 class Manager {
 
@@ -25,6 +27,9 @@ public:
 	static bool removeSystem(System*);
 	static std::list<System*> getSystems();
 
+    static void listen(Listener*);
+    static void initEvent(Event);
+
 	static void cleanUp();
 private:
 	Manager(){};
@@ -32,5 +37,6 @@ private:
 private:
 	static std::list<Entity*> m_entities;
 	static std::list<System*> m_systems;
+    static std::list<Listener*> m_listeners;
 	static int m_lastID;
 };

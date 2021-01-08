@@ -12,10 +12,13 @@
 #include "systems/renderingSystem.h"
 #include "systems/textureLoadingSystem.h"
 #include "scenes/gameScene.h"
+#include "events/listener.h"
 
 void MenuScene::start(){
     std::cout << " \n MenuScene started \n \n";
     
+    Manager::listen(this);
+
     Entity* entity0 = new Entity;
     Manager::addEntity(entity0);
 
@@ -49,10 +52,12 @@ void MenuScene::cleanUp(){
     Manager::cleanUp();
 }
 
-void MenuScene::handleEvents(sf::Event event){
-    if(event.type == sf::Event::KeyPressed){
-        if(event.key.code == sf::Keyboard::Space){
-            SceneManager::changeScene((Scene*)new GameScene());
+void MenuScene::onEvent(Event event){
+    if(event.type == "sfEvent"){
+        if(event.sfEvent.type == sf::Event::KeyPressed){
+            if(event.sfEvent.key.code == sf::Keyboard::Space){
+                SceneManager::changeScene((Scene*)new GameScene());
+            }
         }
     }
 }

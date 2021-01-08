@@ -102,6 +102,21 @@ std::list<System*> Manager::getSystems(){
 	return m_systems;
 }
 
+void Manager::listen(Listener* listener){
+    m_listeners.push_back(listener);
+}
+
+void Manager::initEvent(Event event){
+    std::list<Listener*> helper = m_listeners;
+    for(auto&i : m_listeners){
+        i->onEvent(event);
+        if(m_listeners != helper)
+        {
+            break; //IMPORTANT  when keyev changes scene m_listeners will have changed and create an segfault error
+        }
+    }
+}
+
 int Manager::generateID(){
 	m_lastID++;
 	return m_lastID-1;
@@ -116,9 +131,11 @@ void Manager::cleanUp(){
         delete i;
     }
     m_systems.clear();
+    m_listeners.clear();
     m_lastID = 0;
 }
 
 std::list<Entity*> Manager::m_entities = {};
 std::list<System*> Manager::m_systems = {};
+std::list<Listener*> Manager::m_listeners = {};
 int Manager::m_lastID = 0;

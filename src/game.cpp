@@ -12,6 +12,7 @@
 #include "components/component.h"
 #include "components/rectComponent.h"
 #include "systems/renderingSystem.h"
+#include "events/event.h"
 
 void Game::start(){
 	WindowManager::createWindow(1280,720,"123");
@@ -28,11 +29,10 @@ void Game::updateEvents(){
     sf::Event event;
     while (WindowManager::getWindow()->pollEvent(event))
     {
-        for(auto&i : Manager::getSystems()){
-            i->handleEvents(event);
-        }
-        SceneManager::getCurrentScene()->handleEvents(event);
-
+        Event ev;
+        ev.type = "sfEvent";
+        ev.sfEvent = event;
+        Manager::initEvent(ev);
         if (event.type == sf::Event::Closed){
             WindowManager::getWindow()->close();
         }
