@@ -6,7 +6,7 @@
 
 #include "systems/system.h"
 
-class TextureLoadingSystem : System{
+class TextureLoadingSystem : public System{
     public:
         void start() override;
         void update() override;

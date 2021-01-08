@@ -21,7 +21,7 @@ void MovementSystem::update(){
 
 void MovementSystem::render(){}
 
-void MovementSystem::handleEvent(sf::Event event){
+void MovementSystem::handleEvents(sf::Event event){
     if(event.type == sf::Event::KeyPressed){
         if(event.key.code == sf::Keyboard::W){
             m_w = true;

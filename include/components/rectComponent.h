@@ -5,7 +5,7 @@
 #include "components/component.h"
 
 
-class RectComponent : Component{
+class RectComponent : public Component{
 public:
     RectComponent();
     RectComponent(float, float, float, float);

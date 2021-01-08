@@ -4,7 +4,7 @@
 
 #include "components/component.h"
 
-class MovementComponent : Component{
+class MovementComponent : public Component{
     public:
         MovementComponent();
 

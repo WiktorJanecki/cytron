@@ -2,7 +2,7 @@
 
 #include "components/component.h"
 
-class RectColliderComponent : Component{
+class RectColliderComponent : public Component{
     public:
         enum CollidingDirection{
             UP=0,

@@ -29,8 +29,9 @@ void Game::updateEvents(){
     while (WindowManager::getWindow()->pollEvent(event))
     {
         for(auto&i : Manager::getSystems()){
-            i->handleEvent(event);
+            i->handleEvents(event);
         }
+        SceneManager::getCurrentScene()->handleEvents(event);
 
         if (event.type == sf::Event::Closed){
             WindowManager::getWindow()->close();

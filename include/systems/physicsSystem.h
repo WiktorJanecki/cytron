@@ -2,7 +2,7 @@
 
 #include "systems/system.h"
 
-class PhysicsSystem : System{
+class PhysicsSystem :public System{
     public:
         PhysicsSystem();
 

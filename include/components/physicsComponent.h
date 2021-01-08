@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class PhysicsComponent : Component{
+class PhysicsComponent : public Component{
     public:
         PhysicsComponent();
         

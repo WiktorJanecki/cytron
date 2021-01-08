@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 #include "scenes/scene.h"
 
 class MenuScene : Scene{
@@ -8,5 +10,7 @@ class MenuScene : Scene{
         void update() override;
         void render() override;
         void cleanUp() override;
+
+        void handleEvents(sf::Event) override;
         ~MenuScene();
 };

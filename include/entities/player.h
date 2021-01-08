@@ -4,7 +4,7 @@
 
 class Manager;
 
-class Player : Entity{
+class Player : public Entity{
     public:
         Player(){
             m_player = true;

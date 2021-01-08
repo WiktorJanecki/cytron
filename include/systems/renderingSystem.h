@@ -2,7 +2,7 @@
 
 #include "systems/system.h"
 
-class RenderingSystem : System{
+class RenderingSystem : public System{
 public:
     RenderingSystem();
     void start() override;

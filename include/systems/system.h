@@ -9,7 +9,7 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
-    virtual void handleEvent(sf::Event){}; 
+    virtual void handleEvents(sf::Event){}; 
 
     virtual ~System(){};
 };

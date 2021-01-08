@@ -4,7 +4,7 @@
 
 #include "components/component.h"
 
-class TextureComponent : Component{
+class TextureComponent : public Component{
     public:
         TextureComponent();
         TextureComponent(std::string);
