@@ -81,8 +81,8 @@ void MovementSystem::calculate(){
         m_direction = sf::Vector2f(0.f,0.f);
     }
     if(m_player != nullptr){
-        MovementComponent* movComp = (MovementComponent*) Manager::getComponent((Entity*)m_player,Component::Type::MOVEMENT_COMPONENT);
-        RectComponent* rectComp = (RectComponent*) Manager::getComponent((Entity*)m_player,Component::Type::RECT_COMPONENT);
+        MovementComponent* movComp = (MovementComponent*) Manager::getComponent((Entity*)m_player,Component::getType<MovementComponent>());
+        RectComponent* rectComp = (RectComponent*) Manager::getComponent((Entity*)m_player,Component::getType<RectComponent>());
         if(movComp != nullptr && rectComp != nullptr){
             float dt = TimeManager::getDT();
             float speed = 500.f; 

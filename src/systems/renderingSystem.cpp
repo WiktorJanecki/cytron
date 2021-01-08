@@ -13,8 +13,8 @@ void RenderingSystem::start(){}
 void RenderingSystem::update(){}
 
 void RenderingSystem::render(){
-    for(auto& i: Manager::getEntitiesWith(Component::Type::RECT_COMPONENT)){
-        RectComponent* rectComponent =(RectComponent*) Manager::getComponent(i,Component::Type::RECT_COMPONENT);
+    for(auto& i: Manager::getEntitiesWith(Component::getType<RectComponent>())){
+        RectComponent* rectComponent =(RectComponent*) Manager::getComponent(i,Component::getType<RectComponent>());
         if(rectComponent != nullptr){
             WindowManager::getWindow()->draw(*(rectComponent->getRectangleShape()));
         }

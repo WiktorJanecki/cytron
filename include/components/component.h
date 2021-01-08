@@ -1,19 +1,16 @@
 #pragma once
 
+#include <string>
+#include <typeinfo>
+
 class Component {
 public:
-	enum Type {
-		MESH_COMPONENT = 0,
-		TRANSFORM_COMPONENT,
-        RECT_COMPONENT,
-        TEXTURE_COMPONENT,
-        RECT_COLLIDER_COMPONENT,
-        PHYSICS_COMPONENT,
-        MOVEMENT_COMPONENT,
-    };
     virtual ~Component(){}
 public:
-	Type getType();
-protected:
-	Type m_type;
+    std::string getType();
+    template<typename T>
+        static std::string getType(){
+            T helper;
+            return typeid(helper).name();
+        }
 };

@@ -1,7 +1,7 @@
 #include "components/physicsComponent.h"
 
 PhysicsComponent::PhysicsComponent(){
-    m_type = Component::Type::PHYSICS_COMPONENT;
+
 };
 
 void PhysicsComponent::setVelocity(float x,float y){

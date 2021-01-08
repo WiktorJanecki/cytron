@@ -1,12 +1,10 @@
 #include "components/rectColliderComponent.h"
 
 RectColliderComponent::RectColliderComponent(){
-    m_type = Component::Type::RECT_COLLIDER_COMPONENT;
     m_isColliding = false;
 }
 
 RectColliderComponent::RectColliderComponent(float x, float y, float width, float height){
-    m_type = Component::Type::RECT_COLLIDER_COMPONENT;
     m_isColliding = false;
     m_x = x;
     m_y = y;

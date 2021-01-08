@@ -12,20 +12,20 @@
 void TextureLoadingSystem::start(){
     m_textures = std::unordered_map<std::string, sf::Texture*>();
     
-    for(auto& i : Manager::getEntitiesWith(Component::Type::TEXTURE_COMPONENT)){
-        TextureComponent* txtcomp = (TextureComponent*) Manager::getComponent(i,Component::Type::TEXTURE_COMPONENT);
+    for(auto& i : Manager::getEntitiesWith(Component::getType<TextureComponent>())){
+        TextureComponent* txtcomp = (TextureComponent*) Manager::getComponent(i,Component::getType<TextureComponent>());
 
         if(txtcomp != nullptr){
             if(m_textures.find(txtcomp->getPath()) != m_textures.end()){
-                if(Manager::hasComponent(i,Component::Type::RECT_COMPONENT)){
-                    ((RectComponent*)Manager::getComponent(i, Component::Type::RECT_COMPONENT))->getRectangleShape()->setTexture(m_textures[txtcomp->getPath()]);
+                if(Manager::hasComponent(i,Component::getType<RectComponent>())){
+                    ((RectComponent*)Manager::getComponent(i, Component::getType<RectComponent>()))->getRectangleShape()->setTexture(m_textures[txtcomp->getPath()]);
                 }
             }else{
                 sf::Texture* txt = new sf::Texture();
                 if(txt->loadFromFile("res/textures/" + txtcomp->getPath())){
                     m_textures.insert({txtcomp->getPath(),txt});
-                    if(Manager::hasComponent(i,Component::Type::RECT_COMPONENT)){
-                        ((RectComponent*)Manager::getComponent(i, Component::Type::RECT_COMPONENT))->getRectangleShape()->setTexture(m_textures[txtcomp->getPath()]);
+                    if(Manager::hasComponent(i,Component::getType<RectComponent>())){
+                        ((RectComponent*)Manager::getComponent(i, Component::getType<RectComponent>()))->getRectangleShape()->setTexture(m_textures[txtcomp->getPath()]);
                     }
                 }
             }

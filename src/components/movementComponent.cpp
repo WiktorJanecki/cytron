@@ -1,7 +1,7 @@
 #include "components/movementComponent.h"
 
 MovementComponent::MovementComponent(){
-    m_type = Component::Type::MOVEMENT_COMPONENT;
+
 }
 
 void MovementComponent::setVelocity(float x, float y){

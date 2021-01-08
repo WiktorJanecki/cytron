@@ -6,11 +6,10 @@
 
 
 TextureComponent::TextureComponent(){
-    m_type = Component::Type::TEXTURE_COMPONENT;
+
 }
 
 TextureComponent::TextureComponent(std::string path){
-    m_type = Component::Type::TEXTURE_COMPONENT;
     m_path = path;
 }
 

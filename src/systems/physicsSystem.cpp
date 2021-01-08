@@ -19,9 +19,9 @@ void PhysicsSystem::update(){
 void PhysicsSystem::render(){}
 
 void PhysicsSystem::calculate(){
-    for(auto&ent : Manager::getEntitiesWith(Component::Type::PHYSICS_COMPONENT)){
-        RectComponent* rectComp = (RectComponent*) Manager::getComponent(ent,Component::Type::RECT_COMPONENT);
-        PhysicsComponent* physicsComp = (PhysicsComponent*) Manager::getComponent(ent,Component::Type::PHYSICS_COMPONENT);
+    for(auto&ent : Manager::getEntitiesWith(Component::getType<PhysicsComponent>())){
+        RectComponent* rectComp = (RectComponent*) Manager::getComponent(ent,Component::getType<RectComponent>());
+        PhysicsComponent* physicsComp = (PhysicsComponent*) Manager::getComponent(ent,Component::getType<PhysicsComponent>());
         
         if(rectComp != nullptr && physicsComp != nullptr){
             float dt = TimeManager::getDT();

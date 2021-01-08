@@ -1,5 +1,9 @@
 #include "components/component.h"
 
-Component::Type Component::getType(){
-	return m_type;
+#include <string>
+#include <typeinfo>
+
+
+std::string Component::getType(){
+	return typeid(*this).name();
 }
