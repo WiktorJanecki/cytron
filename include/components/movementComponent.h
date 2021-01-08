@@ -8,8 +8,8 @@ class MovementComponent : Component{
     public:
         MovementComponent();
 
-        void setVelocity(sf::Vector2f);
-        void setAcceleration(sf::Vector2f);
+        void setVelocity(float, float);
+        void setAcceleration(float, float);
 
         sf::Vector2f getVelocity();
         sf::Vector2f getAcceleration();

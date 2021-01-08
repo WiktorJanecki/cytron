@@ -4,12 +4,14 @@ MovementComponent::MovementComponent(){
     m_type = Component::Type::MOVEMENT_COMPONENT;
 }
 
-void MovementComponent::setVelocity(sf::Vector2f vel){
-    m_velocity = vel;
+void MovementComponent::setVelocity(float x, float y){
+    m_velocity.x = x;
+    m_velocity.y = y;
 }
 
-void MovementComponent::setAcceleration(sf::Vector2f acc){
-    m_acceleration = acc;
+void MovementComponent::setAcceleration(float x,float y){
+    m_acceleration.x = x;
+    m_acceleration.y = y;
 }
 
 sf::Vector2f MovementComponent::getVelocity(){

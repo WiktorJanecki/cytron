@@ -89,7 +89,7 @@ void MovementSystem::calculate(){
             float maxSpeed = 200.f;
             float friction = speed/1.5f;
 
-            movComp->setAcceleration(sf::Vector2f(m_direction.x * speed, m_direction.y * speed));
+            movComp->setAcceleration(m_direction.x * speed, m_direction.y * speed);
 
             movComp->increaseVelocity(movComp->getAcceleration().x*dt,movComp->getAcceleration().y*dt);
              
@@ -107,16 +107,16 @@ void MovementSystem::calculate(){
             }
 
             if(movComp->getVelocity().x > maxSpeed){
-                movComp->setVelocity(sf::Vector2f(maxSpeed,movComp->getVelocity().y));
+                movComp->setVelocity(maxSpeed,movComp->getVelocity().y);
             }
             if(movComp->getVelocity().x < -maxSpeed){                                                                            
-                movComp->setVelocity(sf::Vector2f(-maxSpeed,movComp->getVelocity().y));                                          
+                movComp->setVelocity(-maxSpeed,movComp->getVelocity().y);                                          
             }
             if(movComp->getVelocity().y > maxSpeed){                                                                            
-                movComp->setVelocity(sf::Vector2f(movComp->getVelocity().x,maxSpeed));                                          
+                movComp->setVelocity(movComp->getVelocity().x,maxSpeed);                                          
             }
             if(movComp->getVelocity().y < -maxSpeed){                                                                            
-                movComp->setVelocity(sf::Vector2f(movComp->getVelocity().x,-maxSpeed));                                          
+                movComp->setVelocity(movComp->getVelocity().x,-maxSpeed);                                          
             }
     
             rectComp->getRectangleShape()->move(movComp->getVelocity().x * dt, dt * movComp->getVelocity().y);
