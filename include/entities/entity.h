@@ -2,12 +2,20 @@
 
 #include <list>
 
-#include "callable.h"
+#include "components/component.h"
 
 class Manager;
 
-class Entity : Callable{
+class Entity {
+public:
+	int getID();
+    virtual ~Entity();
 private:
-	std::list<Component> components;
-	friend class Manager;
+	void setID(int id);	
+private:
+	int m_id;
+	std::list<Component*> m_components;
+protected:
+    bool m_player = false;
+friend class Manager;
 };

@@ -33,4 +33,10 @@
 *.app
 
 bin/
+
+# Sublime files
+*.sublime-project
 *.sublime-workspace
+compile.sh
+compileWindows.txt
+
