@@ -135,12 +135,15 @@ void MovementSystem::calculate(){
                 float nx = movComp->getVelocity().x * dt;
                 float ny = movComp->getVelocity().y * dt;
 
-                float colx = rectComp->getRectangleShape()->getPosition().x + nx + colliderComp->getX();
-                float coly = rectComp->getRectangleShape()->getPosition().y + ny + colliderComp->getY();
+                float xcolx = rectComp->getRectangleShape()->getPosition().x + nx + colliderComp->getX();
+                float xcoly = rectComp->getRectangleShape()->getPosition().y + colliderComp->getY();
+                float ycolx = rectComp->getRectangleShape()->getPosition().x + colliderComp->getX();
+                float ycoly = rectComp->getRectangleShape()->getPosition().y + ny + colliderComp->getY();
                 float colw = colliderComp->getWidth();
                 float colh = colliderComp->getHeight();
                 
-                bool coltest = false;
+                bool coltestx = false;
+                bool coltesty = false;
 
                 for(auto&i : Manager::getEntitiesWith(Component::getType<RectColliderComponent>())){
                     RectComponent* rectBox = (RectComponent*) Manager::getComponent(i,Component::getType<RectComponent>());
@@ -151,18 +154,26 @@ void MovementSystem::calculate(){
                         float rectw = rectCol->getWidth();
                         float recth = rectCol->getHeight();
                         
-                        if( colx < rectx + rectw &&
-                            colx + colw > rectx &&
-                            coly < recty + recth &&
-                            coly + colh > recty){
-                                coltest = true;
+                        if( xcolx < rectx + rectw &&
+                            xcolx + colw > rectx &&
+                            xcoly < recty + recth &&
+                            xcoly + colh > recty){
+                                coltestx = true;
                         }
-
+                        if( ycolx < rectx + rectw &&
+                            ycolx + colw > rectx &&
+                            ycoly < recty + recth &&
+                            ycoly + colh > recty){
+                                coltesty = true;
+                        }
                     }
                 }
 
-                if(!coltest){
-                    rectComp->getRectangleShape()->move(nx,ny);
+                if(!coltestx){
+                    rectComp->getRectangleShape()->move(nx,0);
+                }
+                if(!coltesty){
+                    rectComp->getRectangleShape()->move(0,ny);
                 }
             }
         }
