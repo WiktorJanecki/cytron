@@ -8,6 +8,7 @@
 #include "managers/gamepadManager.h"
 #include "components/movementComponent.h"
 #include "components/rectComponent.h"
+#include "components/rectColliderComponent.h"
 #include "entities/player.h"
 
 MovementSystem::MovementSystem(){}
@@ -90,6 +91,7 @@ void MovementSystem::calculate(){
     if(m_player != nullptr){
         MovementComponent* movComp = (MovementComponent*) Manager::getComponent((Entity*)m_player,Component::getType<MovementComponent>());
         RectComponent* rectComp = (RectComponent*) Manager::getComponent((Entity*)m_player,Component::getType<RectComponent>());
+        RectColliderComponent * colliderComp = (RectColliderComponent*) Manager::getComponent(m_player,Component::getType<RectColliderComponent>());
         if(movComp != nullptr && rectComp != nullptr){
             float dt = TimeManager::getDT();
             float speed = 500.f; 
@@ -126,7 +128,44 @@ void MovementSystem::calculate(){
                 movComp->setVelocity(movComp->getVelocity().x,-maxSpeed);                                          
             }
     
-            rectComp->getRectangleShape()->move(movComp->getVelocity().x * dt, dt * movComp->getVelocity().y);
+            if(colliderComp == nullptr){
+                rectComp->getRectangleShape()->move(movComp->getVelocity().x * dt, dt * movComp->getVelocity().y);
+            }
+            else{
+                float nx = movComp->getVelocity().x * dt;
+                float ny = movComp->getVelocity().y * dt;
+
+                float colx = rectComp->getRectangleShape()->getPosition().x + nx + colliderComp->getX();
+                float coly = rectComp->getRectangleShape()->getPosition().y + ny + colliderComp->getY();
+                float colw = colliderComp->getWidth();
+                float colh = colliderComp->getHeight();
+                
+                bool coltest = false;
+
+                for(auto&i : Manager::getEntitiesWith(Component::getType<RectColliderComponent>())){
+                    RectComponent* rectBox = (RectComponent*) Manager::getComponent(i,Component::getType<RectComponent>());
+                    RectColliderComponent* rectCol = (RectColliderComponent*) Manager::getComponent(i,Component::getType<RectColliderComponent>());
+                    if(rectBox != nullptr && rectCol != nullptr && i != m_player){
+                        float rectx = rectBox->getRectangleShape()->getPosition().x + rectCol->getX();
+                        float recty = rectBox->getRectangleShape()->getPosition().y + rectCol->getY();
+                        float rectw = rectCol->getWidth();
+                        float recth = rectCol->getHeight();
+                        
+                        if( colx < rectx + rectw &&
+                            colx + colw > rectx &&
+                            coly < recty + recth &&
+                            coly + colh > recty){
+                                coltest = true;
+                        }
+
+                    }
+                }
+
+                if(!coltest){
+                    rectComp->getRectangleShape()->move(nx,ny);
+                }
+            }
         }
     }
 }
+

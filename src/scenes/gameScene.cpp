@@ -9,6 +9,7 @@
 #include "components/movementComponent.h"
 #include "components/textureComponent.h"
 #include "components/physicsComponent.h"
+#include "components/rectColliderComponent.h"
 #include "systems/movementSystem.h"
 #include "systems/physicsSystem.h"
 #include "systems/renderingSystem.h"
@@ -27,8 +28,10 @@ void GameScene::start(){
 
     Manager::addComponent(entity0, new RectComponent(128,128,512,512));
     Manager::addComponent(entity0, new TextureComponent("txt.png"));
-    Manager::addComponent(player, new RectComponent(64,64,64,64));
+    Manager::addComponent(entity0, new RectColliderComponent(0,0,512,512));
+    Manager::addComponent(player, new RectComponent(0,0,64,64));
     Manager::addComponent(player, new TextureComponent("player.png"));
+    Manager::addComponent(player, new RectColliderComponent(0,0,64,64));
     Manager::addComponent(player, new PhysicsComponent());
     Manager::addComponent(player, new MovementComponent());
 
