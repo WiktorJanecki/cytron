@@ -8,5 +8,6 @@ def Settings( **kwargs ):
         '-Werror',
         '-I','include',
         '-I','src',
+        '-I','lib',
         ],
   }

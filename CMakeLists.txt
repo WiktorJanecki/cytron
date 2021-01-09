@@ -9,6 +9,8 @@ file(GLOB_RECURSE CYTRON_SRC
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/include)
+include_directories(
+    ${CMAKE_SOURCE_DIR}/lib)
 
 
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
