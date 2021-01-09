@@ -5,6 +5,7 @@
 
 #include "managers/manager.h"
 #include "managers/timeManager.h"
+#include "managers/gamepadManager.h"
 #include "components/movementComponent.h"
 #include "components/rectComponent.h"
 #include "entities/player.h"
@@ -79,6 +80,9 @@ void MovementSystem::calculate(){
     }
     else if(m_s && m_a && !m_w && !m_d){
         m_direction = sf::Vector2f(-1.f,1.f);
+    }
+    else if(GamepadManager::getConnected()){
+        m_direction = sf::Vector2f(sf::Joystick::getAxisPosition(0,sf::Joystick::Axis::X)/100.f,sf::Joystick::getAxisPosition(0,sf::Joystick::Axis::Y)/100.f);
     }
     else{
         m_direction = sf::Vector2f(0.f,0.f);
