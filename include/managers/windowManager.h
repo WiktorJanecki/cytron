@@ -3,7 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class WindowManager{
+#include "events/event.h"
+#include "events/everySecondEvent.h"
+#include "events/listener.h"
+
+class WindowManager : public Listener{
 public:
 	static sf::RenderWindow* createWindow(int, int, std::string);
 	static sf::RenderWindow* getWindow();
@@ -13,4 +17,5 @@ public:
 private:
 	static sf::RenderWindow* m_window;
 	static std::string title;
+    void onEvent(Event) override;
 };

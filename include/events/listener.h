@@ -5,5 +5,5 @@
 class Listener{
     public:
         virtual void onEvent(Event) = 0;
-        ~Listener(){};
+        virtual ~Listener(){};
 };

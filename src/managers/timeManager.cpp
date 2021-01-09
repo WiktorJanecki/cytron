@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 
 #include "managers/windowManager.h"
+#include "managers/manager.h"
+#include "events/event.h"
+#include "events/everySecondEvent.h"
 
 
 int TimeManager::getFPS(){
@@ -19,8 +22,9 @@ void TimeManager::count(){
 		m_fps = m_fpsHelper;
 		m_fpsHelper = 0;
 		m_fpsClock.restart();
-		//TODO MOVE TO ONSECONDCALLBACK
-		WindowManager::changeTitle("cytron     FPS: "+std::to_string(m_fps));
+        Event ev; //Every second callback
+        ev.type = EverySecondEvent::getType();
+        Manager::initEvent(ev);
 	}
     m_dt = m_dtClock.restart().asSeconds();
 }	           
