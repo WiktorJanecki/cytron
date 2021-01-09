@@ -4,14 +4,21 @@ C++ game made with SFML. It uses entity component system for easy adding new fea
 ## Build
 #### Requirements:
  - Compiler (Mingw/GNU compiler/anything else)
- - SFML (It is necessary to link it with compiler)
+ - SFML
  
  #### Commands:
- First compile to object files:  
-  - `g++ -c src/*.cpp src/*/*.cpp -std=c++14 -m64 -g -Wall -I include`    <br/>
+ Create build directory and move to it  
+  - `mkdir build`
+  - `cd build`     <br/>
   
-Then link them all to one executable file (like .exe on windows):      
-   - `g++ *.o -o <OUTPUT FILE PATH> -lsfml-graphics -lsfml-window -lsfml-system`  
+ Generate makefile      
+   - `cmake ..`     <br/>
+  
+ Build project
+   - `make`  <br/>
+   
+  Copy resources to your build
+   - `cp ../res ./`   <br/>
    
  Finally run the program:   
   - Windows: click the exe icon
